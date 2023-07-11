@@ -6,3 +6,7 @@
 
 {{-- here we are returning the url and keeping in a link --}}
 <a href=" {{URL::previous()}}"> previous</a>
+
+{{-- component header is being added here --}}
+<x-saar componentName="is this it???????"/>
+

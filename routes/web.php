@@ -25,7 +25,8 @@ return view('url.urlfirst');
 );
 //second url
 Route::get('/urlsecond' ,function() {
-    return view('url.urlsecond');    }
+$data=['hosue','jute','good','sdfasd', 'asdddddd','logic'];
+    return view('url.urlsecond', ['trying'=>$data]);    }
 );
 
 //components
