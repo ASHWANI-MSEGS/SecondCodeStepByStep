@@ -41,8 +41,6 @@ Route::post('/submitform',[Mycontroller::class,'getData']);
 Route::view('globalguard','middleware.global.globalguard');
 Route::view('globalmiddle','middleware.global.globalmiddle');
 
-
-
 //grouped middleware
 Route::view('groupedthird','middleware.grouped.groupedthird');
 // grouped route
@@ -50,3 +48,11 @@ Route::group(['middleware'=>['protectedByAsh']],function(){
     Route::view('groupedfirst','middleware.grouped.groupedfirst');
     Route::view('groupedsecond','middleware.grouped.groupedsecond');
 });
+
+//routed middleware
+Route::view('routefirst',"middleware.routed.routefirst")->middleware('protectedByAsh');
+Route::view('routesecond',"middleware.routed.routesecond")->middleware('protectedByAsh');
+Route::view('routethird',"middleware.routed.routethird")->middleware('protectedByAsh');
+
+// direct accessing of db
+Route::get('directDB',[Mycontroller::class,'directDB']);
