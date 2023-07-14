@@ -85,3 +85,6 @@ Route::get("/logoutSession",function(){
  return redirect('getsessionform');
 });
 
+//FLASH SESSION
+Route::view('flashform',"flashsession.flashform");
+Route::post('flashsubmit',[Mycontroller::class,'flashsubmit']);

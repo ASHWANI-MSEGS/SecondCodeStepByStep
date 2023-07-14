@@ -46,11 +46,26 @@ function gethttp()
 
 //session
 function sessionrequest(Request $req){
- $joMilla= $req->input(); //storing the data of req
-$req->session()->put('naaam',$joMilla['name']);//picking out the name data here
+    $joMilla=$req->input('hello');
+    $req ->session()->put('naaam',$joMilla);
+
+   // below process is the same UPPER ONE IS MORE EASY
+
+//  $joMilla= $req->input(); //storing the data of req
+// $req->session()->put('naaam',$joMilla['name']);//picking out the name data here
+
+
 // echo session('naaam');//printing the name data we picked out
 return view("session.showingsession"); // what ever data we display in this view
 }
 
+
+
+// FLASH SESSION
+function flashsubmit(Request $req){
+    $data=$req->input('user');
+    $req->session()->flash('good',$data);
+    return redirect('flashform');
+}
 
 }
