@@ -15,5 +15,5 @@
 @endforeach
 {{-- including the another blade file --}}
 <p>including another blade file</p>
-@include("url.urlfirst")
+
 

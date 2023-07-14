@@ -56,3 +56,32 @@ Route::view('routethird',"middleware.routed.routethird")->middleware('protectedB
 
 // direct accessing of db
 Route::get('directDB',[Mycontroller::class,'directDB']);
+
+//data accessing via db
+Route::get('indirectaccess',[Mycontroller::class,'modeldata']);
+//data accessing in case model and table name not same
+Route::get('indirectrule',[Mycontroller::class,'indirectRule']);
+
+// http requests
+Route::get('gethttp',[Mycontroller::class,'gethttp']);
+
+// session
+//Route::view('getsessionform','session.sessionform');
+Route::post('sessionrequest',[Mycontroller::class,'sessionrequest']);
+Route::view('showingsession',"session.showingsession");
+Route::get("/getsessionform",function(){
+    //this is if they are logged in they will be logged out and redirect
+      if(session()->has('naaam')){
+        return redirect("showingsession");
+      }
+   return view('session.sessionform');
+  });
+//LOGOUT INSIDE THE SESSION
+Route::get("/logoutSession",function(){
+  //this is if they are logged in they will be logged out and redirect
+    if(session()->has('naaam')){
+        session()->pull('naaam');
+    }
+ return redirect('getsessionform');
+});
+
