@@ -88,3 +88,10 @@ Route::get("/logoutSession",function(){
 //FLASH SESSION
 Route::view('flashform',"flashsession.flashform");
 Route::post('flashsubmit',[Mycontroller::class,'flashsubmit']);
+
+//upload a file
+Route::view('fileupload',"fileupload.fileupload");
+Route::post('fileuploaded',[Mycontroller::class,'fileuploaded']);
+
+//show list from the database table
+Route::get('showfromdata',[Mycontroller::class,'showfromdata']);
