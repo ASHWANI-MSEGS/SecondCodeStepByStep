@@ -97,9 +97,15 @@ function editna($id){
     $editable= Bottle::find($id);
     return view('crud.editdatadb',['editable'=>$editable]);
 }
+// updating the data
 function saveAfterUpdate(Request $req)
 {
-    return $req->input();
+
+    return $req->all();
+    //  $update= Bottle::find($req->id);
+    //  $update->name=$req->name;
+    //  $update->save();
+    //  return redirect('showfromdata');
 }
 
 

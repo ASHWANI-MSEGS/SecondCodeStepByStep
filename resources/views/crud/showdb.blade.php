@@ -10,8 +10,8 @@
             <td> {{$rot['id']}} </td>
             <td> {{$rot['name']}} </td>
             <td>
-                <a href="/deletena/{{$rot['id']}}">Delete</a>
-                <a href="/editna/{{$rot['id']}}">| Edit</a> </td>
+              <a href={{"deletena/".$rot['id']}}>Delete</a>
+                <a href={{"editna/".$rot['id']}}>| Edit</a> </td>
         </tr>
 @endforeach
     </tr>
