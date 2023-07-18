@@ -88,3 +88,23 @@ Route::get("/logoutSession",function(){
 //FLASH SESSION
 Route::view('flashform',"flashsession.flashform");
 Route::post('flashsubmit',[Mycontroller::class,'flashsubmit']);
+
+//upload a file
+Route::view('fileupload',"fileupload.fileupload");
+Route::post('fileuploaded',[Mycontroller::class,'fileuploaded']);
+
+//show list from the database table
+Route::get('showfromdata',[Mycontroller::class,'showfromdata']);
+
+//delete a record from a database table
+Route::get('deletena/{id}',[Mycontroller::class,'deletena']);
+//edit a record from a database table
+Route::get('editna/{id}',[Mycontroller::class,'editna']);
+//save afer update
+Route::get('saveAfterUpdate',[Mycontroller::class,'saveAfterUpdate']);
+
+// save data in database
+Route::view('getsavedatadb','crud.getsavedatadb');
+Route::post('savedatadb',[Mycontroller::class,'savedatadb']);
+
+

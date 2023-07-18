@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
- use App\Models\Paper;
- use App\Models\Bottle;
+ use App\Models\Paper;  // these are the model
+ use App\Models\Bottle; // these are the model
 use Illuminate\Support\Facades\DB;//adding for direct access in the db
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade; // ADDING THIS FOR THE INLINE BLADE TEMPLATE
@@ -67,5 +67,58 @@ function flashsubmit(Request $req){
     $req->session()->flash('good',$data);
     return redirect('flashform');
 }
+
+//fileupload
+function fileuploaded(Request $req){
+// echo "<pre>";
+//print_r($req->all());
+//return   $req->input();
+echo $req->file('fileupload')->store('docs');
+// $gttingTheFileBack= $req->file( 'fileupload');
+// return $gttingTheFileBack=$req->fileupload;
+//  return $gttingTheFileBack;
+}
+
+// show list from the database table
+function showfromdata(){
+    //$atta=Bottle::where('name','king')->get();// for getting a specific data in the database
+    $atta=Bottle::paginate(5);
+    return view('crud.showdb',['roti'=>$atta]);
+}
+// deleting from database
+function deletena($id)
+{
+    $datadelete = Bottle::find($id);
+    $datadelete->delete();
+    return redirect('showfromdata');
+}
+//editing from database
+function editna($id){
+    $editable= Bottle::find($id);
+    return view('crud.editdatadb',['editable'=>$editable]);
+}
+// updating the data
+function saveAfterUpdate(Request $req)
+{
+
+    return $req->all();
+    //  $update= Bottle::find($req->id);
+    //  $update->name=$req->name;
+    //  $update->save();
+    //  return redirect('showfromdata');
+}
+
+
+// saving the data in the database
+function savedatadb(Request $req){
+    $bottle = new Bottle;//model name
+    $bottle ->name=$req->name;//adding data to the column
+    $bottle->save();
+    return redirect('getsavedatadb');
+}
+
+
+
+
 
 }
