@@ -1,0 +1,10 @@
+<h1>edit data blade</h1>
+
+<form action="saveAfterUpdate" method="">
+    @csrf
+    <input type="hidden" name="id" placeholder="enter your name" value={{$editable['id']}}>
+    <input type="text" name="name" placeholder="enter your name" value={{$editable['name']}}>
+    <button type="submit">
+        edit
+    </button>
+</form>

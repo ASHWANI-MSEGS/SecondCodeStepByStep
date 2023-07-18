@@ -1,14 +1,17 @@
 <h1>YAHA data aayega</h1>
 
-<table>
+<table border="1">
     <tr>
         <th>id</th>
         <th>name</th>
+        <th>action</th>
 @foreach ($roti as $rot )
         <tr>
             <td> {{$rot['id']}} </td>
             <td> {{$rot['name']}} </td>
-
+            <td>
+                <a href="/deletena/{{$rot['id']}}">Delete</a>
+                <a href="/editna/{{$rot['id']}}">| Edit</a> </td>
         </tr>
 @endforeach
     </tr>

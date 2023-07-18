@@ -85,8 +85,31 @@ function showfromdata(){
     $atta=Bottle::paginate(5);
     return view('crud.showdb',['roti'=>$atta]);
 }
+// deleting from database
+function deletena($id)
+{
+    $datadelete = Bottle::find($id);
+    $datadelete->delete();
+    return redirect('showfromdata');
+}
+//editing from database
+function editna($id){
+    $editable= Bottle::find($id);
+    return view('crud.editdatadb',['editable'=>$editable]);
+}
+function saveAfterUpdate(Request $req)
+{
+    return $req->input();
+}
 
 
+// saving the data in the database
+function savedatadb(Request $req){
+    $bottle = new Bottle;//model name
+    $bottle ->name=$req->name;//adding data to the column
+    $bottle->save();
+    return redirect('getsavedatadb');
+}
 
 
 
