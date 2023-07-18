@@ -83,7 +83,7 @@ Route::get("/logoutSession",function(){
         session()->pull('naaam');
     }
  return redirect('getsessionform');
-});
+}); 
 
 //FLASH SESSION
 Route::view('flashform',"flashsession.flashform");

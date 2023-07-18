@@ -46,7 +46,7 @@ function gethttp()
 
 //session
 function sessionrequest(Request $req){
-    $joMilla=$req->input('hello');
+    $joMilla=$req->input('name');
     $req ->session()->put('naaam',$joMilla);
 
    // below process is the same UPPER ONE IS MORE EASY
