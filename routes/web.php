@@ -108,3 +108,16 @@ Route::view('getsavedatadb','crud.getsavedatadb');
 Route::post('savedatadb',[Mycontroller::class,'savedatadb']);
 
 
+// show data 2
+Route::get("show2",[Mycontroller::class,'show2']);
+//delte
+Route::get('delete2/{id}',[Mycontroller::class,'delete2']);
+//edit
+Route::get("edit2/{id}",[Mycontroller::class,'edit2']);
+// after edit
+//Route::put("/update22",[Mycontroller::class,'update2']);
+Route::post("/update22",[Mycontroller::class,'update2']);
+
+// error
+//The GET method is not supported for route update22. Supported methods: POST.
+
