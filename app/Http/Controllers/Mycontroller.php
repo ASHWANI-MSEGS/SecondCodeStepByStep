@@ -25,7 +25,19 @@ class Mycontroller extends Controller
         return $req->input(); // THIS TO GET BACK THE DATA I FILLLED JUST NOW
     }
     function directDB(){
-        return DB::select('select * from bottles');
+        $directData= DB::table('bottles')
+->get();
+        return $directData;
+ //->where('id',22)->delete();
+//->where('id',22)
+// ->update([ 'name'=>'anger']);
+
+// ->insert(['name'=>'ion' ] );
+        //  ->find(6);
+        // ->count();
+        //->where('name',"king") ->get();
+     // return  view('Query Builder.query',['directData'=>$directData]);
+       // return DB::select('select * from bottles');
         //    return view('directDB.directDB');
     }
     // for getting data via model
@@ -117,8 +129,36 @@ function savedatadb(Request $req){
     return redirect('getsavedatadb');
 }
 
+function show2(){
+// return Bottle::all();
+// this will show all the data
+   // $showdata2 = Bottle::all();'
+// pagination
+$showdata2 = Bottle::all();
+    return view('crud2.showdata',['showdata'=>$showdata2 ]);
+}
+//delete
+function delete2($id){
+$delete2 = Bottle::find($id);
+$delete2->delete();
+return redirect("show2")->with("message", " id $id recod deleted");
+}
+//edit
+function edit2($id)
+{
+    $edit2 = Bottle::find($id);
+    return view('crud2.edit2',['edit2'=>$edit2]);
+}
+//update
+function update2(Request $req){
+   // $data= new Bottle;
+    $data=Bottle::find($req->id);
+    $data->name=$req->name;
+    $data->save();
+    return redirect("show2");
+}
 
-
+// aggregates Queries
 
 
 }
