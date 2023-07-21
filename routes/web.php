@@ -121,3 +121,13 @@ Route::post("/update22",[Mycontroller::class,'update2']);
 // error
 //The GET method is not supported for route update22. Supported methods: POST.
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
