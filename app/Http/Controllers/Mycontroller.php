@@ -141,7 +141,7 @@ $showdata2 = Bottle::all();
 function delete2($id){
 $delete2 = Bottle::find($id);
 $delete2->delete();
-return redirect("show2")->with("message", " id $id recod deleted");
+return redirect("show2")->with("message", " id $id record deleted");
 }
 //edit
 function edit2($id)
