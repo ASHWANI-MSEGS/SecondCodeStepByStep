@@ -158,7 +158,10 @@ function update2(Request $req){
     return redirect("show2");
 }
 
-// aggregates Queries
+// accessors
 
+function accessors(){
+    return Paper::all();
+}
 
 }
