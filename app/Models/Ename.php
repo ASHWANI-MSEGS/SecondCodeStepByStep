@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paper extends Model
+class Ename extends Model
 {
     use HasFactory;
-    public $table="phones";// this is used when the table and model
-    // is of different names
+    function companyData(){
+        return $this->hasMany('App\Models\Property');
+    }
 
 
 }

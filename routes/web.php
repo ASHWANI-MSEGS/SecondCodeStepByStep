@@ -121,3 +121,12 @@ Route::post("/update22",[Mycontroller::class,'update2']);
 // error
 //The GET method is not supported for route update22. Supported methods: POST.
 
+//accessors
+Route::get('accessing',[Mycontroller::class,'accessing']);
+//mutators
+Route::get('mutating',[Mycontroller::class,'mutating']);
+
+//one to one
+Route::get('companies',[Mycontroller::class,'companies']);
+
+

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
  use App\Models\Paper;  // these are the model
  use App\Models\Bottle; // these are the model
+ use App\Models\Phone; // these are the model
+ use App\Models\Ename; // these are the model
 use Illuminate\Support\Facades\DB;//adding for direct access in the db
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade; // ADDING THIS FOR THE INLINE BLADE TEMPLATE
@@ -158,7 +160,21 @@ function update2(Request $req){
     return redirect("show2");
 }
 
-// aggregates Queries
+// ACCESSORS
+function accessing(){
+  return Bottle::all();
+}
+//mutators
+function mutating(){
+    $run = new Phone;
+    $run->name="mega";
+    $run->save();
+}
+
+// one one relations
+function companies(){
+    return Ename::find(2)->companyData;
+}
 
 
 }
