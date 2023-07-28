@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dummyApi;
+use App\Http\Controllers\AllController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    //All secure URL's
 // get api
 Route::get('getApiData',[dummyApi::class,'getApiData']);
 // getting api from the database
@@ -34,7 +39,25 @@ Route::get('addApi',[dummyApi::class,'addApi']);
 Route::put('updateApi/{id}',[dummyApi::class,'updateApi']);
 //delete in the databaseR
 Route::delete('deleteApi/{id}',[dummyApi::class,'deleteApi']);
+// searching in the database
+Route::get('searchApi/{naming}',[dummyApi::class,'searchApi']);
+
+//validation
+Route::post('validateApi',[dummyApi::class,'validateApi']);
+
+//Resource Api
+Route::apiResource("apiRes",AllController::class) ;
+    });
 
 
 
 
+
+
+Route::post('loginApi',[UserController::class,'index']);
+
+
+
+
+// just in case you need it
+//Route::post("login",[UserController::class,'index']);

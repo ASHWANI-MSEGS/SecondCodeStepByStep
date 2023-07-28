@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Validator;
 
 class dummyApi extends Controller
 {
@@ -60,6 +61,44 @@ else{
 }
 }
 
+function searchApi($naming){
+ // return Keyboard::where('name',$naming)->get();// this for searching the exact word
+ $data= Keyboard::where('name','LIKE', '%'.$naming."%")->get();// this for searching words similar to it
+ if(count($data)==0){
+   return ["Messege"=>"no Data Found"];
+ }
+ else{
+   return ["Messege"=>"  Data Found"];
+ }
+}
+
+function validateApi(Request $req)
+{
+ $rules = array("ename_id"=>"required");
+$validatorr = Validator::make($req->all(),$rules);
+if($validatorr->fails())
+{
+    return $validatorr->errors();
+}
+else{
+    $pro = new Property;
+    $pro->name=$req->name;
+    $pro->ename_id=$req->ename_id;
+  $check= $pro->save();
+if($check)
+ {
+   return ["result"=>"done"];
+ }
+else {
+   return ["result"=>"done not done"];
+}
+}
+    return ["a"=>'x'];
+}
+
+
+
+ 
 
 
 
